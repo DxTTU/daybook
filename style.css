@@ -1,0 +1,182 @@
+/* Daybook — paper / journal look */
+
+:root {
+  --paper: #f6f1e5;
+  --card: #fffdf6;
+  --ink: #2b2620;
+  --ink-soft: #6f655a;
+  --line: #e7ddc9;
+  --accent: #b3541e;
+  --accent-dark: #93400f;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--paper);
+  background-image: radial-gradient(#00000008 1px, transparent 1px);
+  background-size: 22px 22px;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  display: flex;
+  justify-content: center;
+  padding: 48px 20px;
+}
+
+.page {
+  width: 100%;
+  max-width: 560px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  box-shadow: 0 12px 40px #3a2f1d14, 0 2px 6px #3a2f1d0d;
+  padding: 44px 44px 32px;
+  position: relative;
+}
+
+/* red margin line, like a notebook */
+.page::before {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0; left: 34px;
+  width: 1px;
+  background: #d98a8a55;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+h1 {
+  margin: 0;
+  font-size: 44px;
+  font-weight: normal;
+  letter-spacing: 0.5px;
+}
+
+.sub {
+  margin: 6px 0 30px;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.add-row { display: flex; gap: 10px; margin-bottom: 8px; }
+
+.add-row input {
+  flex: 1;
+  font: inherit;
+  font-size: 17px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: #fff;
+  color: var(--ink);
+}
+
+.add-row input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+
+.add-row button {
+  font: inherit;
+  font-size: 16px;
+  padding: 0 22px;
+  border: none;
+  border-radius: 3px;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+}
+
+.add-row button:hover { background: var(--accent-dark); }
+
+.tasks { list-style: none; margin: 18px 0 0; padding: 0; }
+
+.tasks li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 4px;
+  border-bottom: 1px solid var(--line);
+  font-size: 18px;
+}
+
+.check {
+  flex: none;
+  width: 22px; height: 22px;
+  border: 1.5px solid var(--ink-soft);
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.check:hover { border-color: var(--accent); }
+
+li.done .check {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+li.done .label { text-decoration: line-through; color: var(--ink-soft); }
+
+.label { flex: 1; overflow-wrap: anywhere; }
+
+.del {
+  border: none;
+  background: none;
+  color: #b9ab93;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+}
+
+.del:hover { color: #a33; }
+
+.empty {
+  margin: 34px 0;
+  text-align: center;
+  color: var(--ink-soft);
+  font-style: italic;
+  font-size: 17px;
+}
+
+.hidden { display: none !important; }
+
+.foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 22px;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.link-btn {
+  border: none;
+  background: none;
+  color: var(--accent);
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.status {
+  margin: 18px 0 0;
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+@media (max-width: 520px) {
+  .page { padding: 32px 26px 24px; }
+  .page::before { left: 20px; }
+  h1 { font-size: 36px; }
+}
