@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Daybook — a quiet little to-do app</title>
+<link rel="stylesheet" href="style.css" />
+<script type="importmap">
+{
+  "imports": {
+    "firebase/app": "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js",
+    "firebase/firestore": "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js"
+  }
+}
+</script>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <p class="eyebrow" id="dateLine"></p>
+      <h1>Daybook</h1>
+      <p class="sub">One page. Today's tasks. Nothing else.</p>
+    </header>
+
+    <form id="addForm" class="add-row" autocomplete="off">
+      <input id="taskInput" type="text" placeholder="Write a task for today…" maxlength="140" />
+      <button type="submit">Add</button>
+    </form>
+
+    <ul id="taskList" class="tasks"></ul>
+    <p id="emptyState" class="empty hidden">A blank page. Enjoy it — or fill it.</p>
+
+    <footer class="foot">
+      <span id="countLine"></span>
+      <button id="clearDone" class="link-btn hidden" type="button">Clear completed</button>
+    </footer>
+
+    <p id="statusLine" class="status"></p>
+  </main>
+  <script type="module" src="script.js"></script>
+</body>
+</html>
